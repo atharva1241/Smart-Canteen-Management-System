@@ -1,155 +1,236 @@
-# 🍽️ Smart Canteen Management System
+## Elder Health Monitoring & SOS Alert System
 
-A Python-based **Smart Canteen Management System** designed to simplify food menu management, customer ordering, billing, and inventory tracking.
+→→→ Introduction
 
-This project was developed as part of the **Introduction to Python** course to demonstrate practical use of Python programming concepts such as functions, modules, conditional statements, loops, exception handling, SQLite database operations, CRUD operations, and modular programming.
+Caring for elderly people has become an increasingly important responsibility as families grow smaller and life expectancy continues to rise. Many older adults now live alone, which can leave them vulnerable during sudden medical problems or emergencies when no one is around to help. This project aims to offer a practical and reliable solution through an automated Python-based health monitoring system. It simulates essential vital signs, keeps track of unusual patterns, and triggers an SOS alert when something seems wrong. The goal is to provide elders with an added layer of safety and reassurance, while giving families peace of mind.
 
----
+------------------------------------------------------------------------
 
-## 📌 Project Overview
+ ## Real-World Problem
 
-Managing a college canteen manually can become difficult when there are many food items, customers, orders, and stock records.
+Many elderly individuals suffer from: - Heart-related emergencies
+- High fever or infections.
+- Low oxygen levels.
+- Sudden falls or unconsciousness.
+- No immediate caretaker response.
 
-The **Smart Canteen Management System** provides a simple computerized solution for managing the major activities of a canteen.
+Major Issue: Delay in medical attention.
+A simple automated system can help reduce risk and save lives.
 
-The system allows users to:
+------------------------------------------------------------------------
 
-- Manage food items
-- View and search the menu
-- Add new food items
-- Update food information
-- Place customer orders
-- Calculate bills automatically
-- Maintain order history
-- Manage inventory
-- Add and update stock
-- Detect low-stock items
-- Store information using SQLite
+##  Objectives
 
-The project is developed as a **console-based Python application** with a modular structure.
+-   Simulate heart rate & temperature.
+-   Detect abnormal health conditions.
+-   Trigger instant SOS alerts.
+-   Demonstrate real-time monitoring.
+-   Offer a beginner-friendly Python model.
 
----
+------------------------------------------------------------------------
 
-## 🎯 Objectives
+##  Concepts Used (From Coursework)
 
-The main objectives of this project are:
+-   Loops -- continuous monitoring.
+-   Functions -- modular approach.
+-   Conditional statements -- threshold detection.
+-   Random module -- simulated sensor data.
+-   Time module -- real-time delay.
 
-1. To develop a simple and user-friendly canteen management system using Python.
-2. To automate food ordering and billing.
-3. To maintain accurate food inventory records.
-4. To reduce manual work in managing canteen operations.
-5. To demonstrate Python programming concepts in a real-world application.
-6. To store and retrieve data using an SQLite database.
-7. To implement input validation and error handling.
-8. To create a modular and maintainable Python project.
+------------------------------------------------------------------------
 
----
+##  Tools & Technologies
 
-## 🚨 Problem Statement
+-   Python 3.x
+-   Libraries: `random`, `time`
+-   Console-based UI
 
-In a traditional canteen, food menus, orders, bills, and inventory may be managed manually.
+------------------------------------------------------------------------
 
-This can lead to problems such as:
+##  Problem Definition
 
-- Difficulty maintaining stock records
-- Errors in calculating bills
-- Difficulty tracking previous orders
-- Lack of automatic low-stock notifications
-- Time-consuming manual data entry
-- Difficulty searching for food items
-- Increased chances of human error
+Elders need reliable monitoring, but manual supervision isn't
+practical.
+This system automates vital checking and alerts during emergencies.
 
-The proposed system addresses these problems by providing a centralized Python-based application for managing canteen operations.
+------------------------------------------------------------------------
 
----
+##  Requirements Analysis
 
-## 👥 Target Users
+### Functional Requirements
 
-The system can be used by:
+-   Generate heart rate.
+-   Generate body temperature.
+-   Compare values with thresholds.
+-   Display output.
+-   Trigger SOS alerts.
 
-- College canteen staff
-- Canteen administrators
-- Food counter staff
-- Students and customers
-- Small food service businesses
+### Non-Functional Requirements
 
----
+-   Easy to operate.
+-   Readable.
+-   Reliable.
+-   Low resource usage.
 
-## ⭐ Features
+------------------------------------------------------------------------
 
-### 🍔 1. Menu Management
+##  Top-Down Design (Modules)
 
-The menu management module allows the user to:
+``` text
+generate_vitals()   → Creates random health values  
+check_thresholds()  → Evaluates vitals  
+display_output()    → Prints current readings  
+trigger_sos()       → Displays alert  
+main_loop()         → Runs continuous monitoring  
+```
 
-- View available food items
-- Add new food items
-- Search for food items
-- Update food information
-- Remove food items
-- Manage food categories
-- View food prices
-- View available stock
+------------------------------------------------------------------------
 
-### 🛒 2. Order & Billing Management
+##  Step-Wise Algorithm
 
-The order module allows the user to:
+1.  Start.
+2.  Generate vitals.
+3.  Print values.
+4.  Check threshold.
+5.  If abnormal → show SOS alert.
+6.  Else → continue.
+7.  Wait 1 second.
+8.  Repeat
 
-- Place new orders
-- Select multiple food items
-- Enter required quantities
-- Check item availability
-- Calculate item-wise subtotal
-- Calculate total order amount
-- Automatically calculate 5% tax
-- Generate a bill
-- Store order history
-- View previous order details
+------------------------------------------------------------------------
 
-### 📦 3. Inventory Management
+##  Flowchart (Mermaid)
 
-The inventory module allows the user to:
+``` mermaid
+flowchart TD
+    A[Start] --> B[Generate Vitals]
+    B --> C[Check Thresholds]
+    C -->|Abnormal| D[SOS Alert]
+    C -->|Normal| E[Continue Monitoring]
+    D --> E
+    E --> B
+```
 
-- View current stock
-- Add stock
-- Update stock
-- Automatically reduce stock after an order
-- Detect low-stock items
-- Generate a low-stock report
-- Automatically make an item unavailable when stock reaches zero
+------------------------------------------------------------------------
 
----
+##  Testing & Refinement
 
-## 🔄 System Workflow
+-   Tested multiple random ranges,
+-   Verified threshold accuracy,
+-   Continuous loop stability,
+-   Improved warnings & readability.
 
-```text
-                    ┌───────────────────────┐
-                    │         START         │
-                    └───────────┬───────────┘
-                                │
-                                ↓
-                    ┌───────────────────────┐
-                    │   Initialize Database │
-                    └───────────┬───────────┘
-                                │
-                                ↓
-                    ┌───────────────────────┐
-                    │     Main Menu         │
-                    └───────────┬───────────┘
-                                │
-             ┌──────────────────┼──────────────────┐
-             ↓                  ↓                  ↓
-      ┌─────────────┐    ┌─────────────┐    ┌──────────────┐
-      │    Menu     │    │   Orders &  │    │  Inventory   │
-      │ Management  │    │   Billing   │    │ Management   │
-      └──────┬──────┘    └──────┬──────┘    └──────┬───────┘
-             │                  │                  │
-             └──────────────────┼──────────────────┘
-                                ↓
-                       ┌─────────────────┐
-                       │ SQLite Database │
-                       └────────┬────────┘
-                                │
-                                ↓
-                       ┌─────────────────┐
-                       │      EXIT       │
-                       └─────────────────┘
+------------------------------------------------------------------------
+
+##  Features
+
+-   Real-time simulation.
+-   Automated health checks.
+-   Beginner-friendly.
+-   Clean and modular code.
+
+------------------------------------------------------------------------
+
+##  Detailed Workflow
+
+``` mermaid
+sequenceDiagram
+    participant S as System
+    participant V as Vital Generator
+    participant C as Checker
+    participant A as Alert Module
+
+    S->>V: Generate vitals
+    V->>S: Return HR & Temp
+    S->>C: Evaluate thresholds
+    C-->>S: Normal/Abnormal
+    alt Abnormal
+        S->>A: Trigger SOS
+    end
+```
+
+------------------------------------------------------------------------
+
+##  Folder Structure
+
+    project/
+    │── project_report/
+    │── screenshots/
+    │── README.md
+    └── src/
+        └── main.py
+
+------------------------------------------------------------------------
+
+##  How to Operate the Program
+
+### Step 1 -- Download or clone the GitHub repository
+
+### Step 2 -- Open the project folder
+
+### Step 3 -- Go to the `src` directory
+
+### Step 4 -- Run the program:
+
+``` bash
+python main.py
+```
+
+### Step 5 -- Observe real-time monitoring
+
+You will see:
+- Heart rate
+- Temperature
+- Status (Normal / Warning / SOS)
+
+### Step 6 -- SOS Alerts
+
+Displayed when vitals cross thresholds.
+
+### Step 7 -- Stop the program manually (Ctrl + C)
+
+------------------------------------------------------------------------
+
+##  Future Enhancements
+
+-   Add oxygen monitoring.
+-   Integrate real sensors.
+-   SMS/Call API.
+-   Mobile app.
+-   Cloud database.
+
+------------------------------------------------------------------------
+
+##  Real-World Applications
+
+Useful for:
+- Elders living alone,
+- Remote patient care,
+- Home health IoT,
+- Hospitals,
+- Wearable devices.
+
+------------------------------------------------------------------------
+
+##  Importance for Students
+
+Students learn:
+- Real-world coding,
+- Modular design,
+- IoT basics,
+- Proper documentation.
+
+------------------------------------------------------------------------
+
+##  Conclusion
+
+The Elder Health Monitoring & SOS Alert System demonstrates how simple
+Python concepts can solve meaningful real-world problems.
+By simulating vitals and detecting abnormalities, the system provides
+automated, continuous monitoring for elders, helping prevent medical
+delays.
+This foundational model is highly expandable for IoT health technologies
+and real sensor integration.
+
+------------------------------------------------------------------------
+
